@@ -1,0 +1,57 @@
+{
+  "?xml": {
+    "@_version": "1.0",
+    "@_encoding": "UTF-8"
+  },
+  "testsuites": {
+    "testsuite": [
+      {
+        "@_name": "Root Suite",
+        "@_timestamp": "2023-11-03T12:41:54",
+        "@_tests": "0",
+        "@_file": "cypress\\e2e\\spec.cy.js",
+        "@_time": "0.000",
+        "@_failures": "0"
+      },
+      {
+        "testcase": [
+          {
+            "failure": {
+              "#text": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `non existing element`, but never found it.\n    at Context.eval (webpack://cypress-testrail-turbo-reporter/./cypress/e2e/spec.cy.js:7:7)",
+              "@_message": "Timed out retrying after 4000ms: Expected to find element: `non existing element`, but never found it.",
+              "@_type": "AssertionError"
+            },
+            "@_name": "template spec C9039 - test 1",
+            "@_time": "0.000",
+            "@_classname": "C9039 - test 1"
+          },
+          {
+            "failure": {
+              "#text": "AssertionError: Timed out retrying after 4000ms: Expected to find element: ``, but never found it.\n    at Context.eval (webpack://cypress-testrail-turbo-reporter/./cypress/e2e/spec.cy.js:11:7)",
+              "@_message": "Timed out retrying after 4000ms: Expected to find element: ``, but never found it.",
+              "@_type": "AssertionError"
+            },
+            "@_name": "template spec C9099 - test 2",
+            "@_time": "0.000",
+            "@_classname": "C9099 - test 2"
+          },
+          {
+            "@_name": "template spec C9988 - test 3",
+            "@_time": "0.137",
+            "@_classname": "C9988 - test 3"
+          }
+        ],
+        "@_name": "template spec",
+        "@_timestamp": "2023-11-03T12:41:54",
+        "@_tests": "4",
+        "@_time": "11.092",
+        "@_failures": "2"
+      }
+    ],
+    "@_name": "Mocha Tests",
+    "@_time": "11.096",
+    "@_tests": "4",
+    "@_failures": "2",
+    "@_skipped": "1"
+  }
+}
