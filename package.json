@@ -1,0 +1,29 @@
+{
+  "name": "cypress-testrail-turbo-reporter",
+  "version": "1.0.0",
+  "description": "My own reporter with Tetrail api",
+  "main": "index.js",
+  "scripts": {
+    "test": "run: test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miroslavkadidlo/cypress-testrail-turbo-reporter.git"
+  },
+  "keywords": [
+    "cypress",
+    "testrail",
+    "cypress-testrail",
+    "reporter"
+  ],
+  "author": "Miroslav Kadidlo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/miroslavkadidlo/cypress-testrail-turbo-reporter/issues"
+  },
+  "homepage": "https://github.com/miroslavkadidlo/cypress-testrail-turbo-reporter#readme",
+  "dependencies": {
+    "cypress": "^13.4.0",
+    "fast-xml-parser": "^4.3.2"
+  }
+}
