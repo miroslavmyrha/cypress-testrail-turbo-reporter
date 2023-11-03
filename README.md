@@ -1,2 +1,2 @@
 # cypress-testrail-turbo-reporter
-My own reporter, coz current tr reporters drive me crazy...
+My own reporter
