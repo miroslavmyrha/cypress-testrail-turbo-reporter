@@ -30,9 +30,15 @@ module.exports = defineConfig({
               const parser = new XMLParser(options)
               let jObj = parser.parse(xmlData)
 
-              console.log(jObj)
+              const other = jObj.testsuites.testsuite[1].testcase
 
-              fs.writeFileSync('./results/my-test-output.json', JSON.stringify(jObj, null, 2) , 'utf-8')
+              let arrayOfTestCases = []
+
+              other.forEach(element => {
+                arrayOfTestCases.push(element['@_classname'])
+              })
+
+              fs.writeFileSync('./results/my-test-output.json', JSON.stringify(arrayOfTestCases, null, 2) , 'utf-8')
             }
           })
         }
