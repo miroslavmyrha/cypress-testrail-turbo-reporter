@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="Mocha Tests" time="15.064" tests="4" failures="3">
-  <testsuite name="Root Suite" timestamp="2023-11-04T13:13:08" tests="0" file="cypress\e2e\spec.cy.js" time="0.000" failures="0">
+<testsuites name="Mocha Tests" time="15.470" tests="4" failures="3">
+  <testsuite name="Root Suite" timestamp="2023-11-04T13:55:51" tests="0" file="cypress\e2e\spec.cy.js" time="0.000" failures="0">
   </testsuite>
-  <testsuite name="template spec" timestamp="2023-11-04T13:13:08" tests="4" time="15.061" failures="3">
+  <testsuite name="template spec" timestamp="2023-11-04T13:55:51" tests="4" time="15.466" failures="3">
     <testcase name="template spec C9039 - test 1" time="0.000" classname="C9039 - test 1">
       <failure message="Timed out retrying after 4000ms: Expected to find element: `non existing element`, but never found it." type="AssertionError"><![CDATA[AssertionError: Timed out retrying after 4000ms: Expected to find element: `non existing element`, but never found it.
     at Context.eval (webpack://cypress-testrail-turbo-reporter/./cypress/e2e/spec.cy.js:7:7)]]></failure>
@@ -11,7 +11,7 @@
       <failure message="Timed out retrying after 4000ms: Expected to find element: ``, but never found it." type="AssertionError"><![CDATA[AssertionError: Timed out retrying after 4000ms: Expected to find element: ``, but never found it.
     at Context.eval (webpack://cypress-testrail-turbo-reporter/./cypress/e2e/spec.cy.js:11:7)]]></failure>
     </testcase>
-    <testcase name="template spec C9988 - test 3" time="0.109" classname="C9988 - test 3">
+    <testcase name="template spec C9988 - test 3" time="0.124" classname="C9988 - test 3">
     </testcase>
     <testcase name="template spec C9989 - test 4" time="0.000" classname="C9989 - test 4">
       <failure message="Timed out retrying after 4000ms: Expected to find element: `nevim`, but never found it." type="AssertionError"><![CDATA[AssertionError: Timed out retrying after 4000ms: Expected to find element: `nevim`, but never found it.

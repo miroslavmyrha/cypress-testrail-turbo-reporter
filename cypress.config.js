@@ -1,6 +1,7 @@
 const { defineConfig } = require('cypress')
 const fs = require('fs')
-const { XMLParser, XMLBuilder, XMLValidator} = require("fast-xml-parser")
+const { XMLParser } = require('fast-xml-parser')
+const axios = require('axios').default
 
 module.exports = defineConfig({
   reporter: 'junit',
@@ -30,15 +31,22 @@ module.exports = defineConfig({
               const parser = new XMLParser(options)
               const jObj = parser.parse(xmlData)
 
-              fs.writeFileSync('./results/all.json', JSON.stringify(jObj, null, 2) , 'utf-8')
+              fs.writeFileSync(
+                './results/all.json', 
+                JSON.stringify(
+                  jObj, null, 2
+                ), 
+                'utf-8'
+              )
 
               const testCases = jObj.testsuites.testsuite[1].testcase
 
               let objectOfTestCases = {}
 
-              testCases.forEach((element, index) => {
-                const caseLabelLength = element['@_classname'].length
-                const sliceOnlyCaseID = element['@_classname'].slice(0, -(caseLabelLength - 5))
+              testCases.forEach((testCase, index) => {
+                const caseLabelLength = testCase['@_classname'].length
+                // number case label in format(Cxxxx)
+                const sliceOnlyCaseID = testCase['@_classname'].slice(0, -(caseLabelLength - 5))
 
                 if (testCases[index].failure) {
                   objectOfTestCases[sliceOnlyCaseID] = 'failure'
@@ -47,7 +55,13 @@ module.exports = defineConfig({
                 }
               })
 
-              fs.writeFileSync('./results/my-test-output.json', JSON.stringify(objectOfTestCases, null, 2) , 'utf-8')
+              fs.writeFileSync(
+                './results/my-test-output.json', 
+                JSON.stringify(
+                  objectOfTestCases, null, 2
+                ),
+                'utf-8'
+              )
             }
           })
         }
