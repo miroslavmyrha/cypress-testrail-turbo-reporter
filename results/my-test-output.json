@@ -1,5 +1,6 @@
-[
-  "C9039 - test 1: failure",
-  "C9099 - test 2: failure",
-  "C9988 - test 3"
-]
+{
+  "C9039": "failure",
+  "C9099": "failure",
+  "C9988": "",
+  "C9989": "failure"
+}

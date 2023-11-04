@@ -15,7 +15,7 @@ describe('template spec', () => {
     cy.get('h1').should('exist').and('be.visible')
   })
 
-  it.skip('C9988 - test 4', () => {
-
+  it('C9989 - test 4', () => {
+    cy.get('nevim')
   })
 })
