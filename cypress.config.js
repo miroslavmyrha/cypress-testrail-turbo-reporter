@@ -30,12 +30,18 @@ module.exports = defineConfig({
               const parser = new XMLParser(options)
               let jObj = parser.parse(xmlData)
 
+              fs.writeFileSync('./results/all.json', JSON.stringify(jObj, null, 2) , 'utf-8')
+
               const other = jObj.testsuites.testsuite[1].testcase
 
               let arrayOfTestCases = []
 
-              other.forEach(element => {
-                arrayOfTestCases.push(element['@_classname'])
+              other.forEach((element, index) => {
+                if (other[index].failure) {
+                  arrayOfTestCases.push(element['@_classname'] + ': failure')
+                } else {
+                  arrayOfTestCases.push(element['@_classname'])
+                }
               })
 
               fs.writeFileSync('./results/my-test-output.json', JSON.stringify(arrayOfTestCases, null, 2) , 'utf-8')
