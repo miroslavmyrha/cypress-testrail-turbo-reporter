@@ -32,22 +32,22 @@ module.exports = defineConfig({
 
               fs.writeFileSync('./results/all.json', JSON.stringify(jObj, null, 2) , 'utf-8')
 
-              const testCase = jObj.testsuites.testsuite[1].testcase
+              const testCases = jObj.testsuites.testsuite[1].testcase
 
-              let arrayOfTestCases = {}
+              let objectOfTestCases = {}
 
-              testCase.forEach((element, index) => {
+              testCases.forEach((element, index) => {
                 const caseLabelLength = element['@_classname'].length
-                const sliced = element['@_classname'].slice(0, -(caseLabelLength - 5))
+                const sliceOnlyCaseID = element['@_classname'].slice(0, -(caseLabelLength - 5))
 
-                if (testCase[index].failure) {
-                  arrayOfTestCases[sliced] = 'failure'
+                if (testCases[index].failure) {
+                  objectOfTestCases[sliceOnlyCaseID] = 'failure'
                 } else {
-                  arrayOfTestCases[sliced] = ''
+                  objectOfTestCases[sliceOnlyCaseID] = ''
                 }
               })
 
-              fs.writeFileSync('./results/my-test-output.json', JSON.stringify(arrayOfTestCases, null, 2) , 'utf-8')
+              fs.writeFileSync('./results/my-test-output.json', JSON.stringify(objectOfTestCases, null, 2) , 'utf-8')
             }
           })
         }
