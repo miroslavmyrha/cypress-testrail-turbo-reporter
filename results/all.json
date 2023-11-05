@@ -7,7 +7,7 @@
     "testsuite": [
       {
         "@_name": "Root Suite",
-        "@_timestamp": "2023-11-04T13:55:51",
+        "@_timestamp": "2023-11-05T22:31:03",
         "@_tests": "0",
         "@_file": "cypress\\e2e\\spec.cy.js",
         "@_time": "0.000",
@@ -37,7 +37,7 @@
           },
           {
             "@_name": "template spec C9988 - test 3",
-            "@_time": "0.124",
+            "@_time": "0.106",
             "@_classname": "C9988 - test 3"
           },
           {
@@ -52,14 +52,14 @@
           }
         ],
         "@_name": "template spec",
-        "@_timestamp": "2023-11-04T13:55:51",
+        "@_timestamp": "2023-11-05T22:31:03",
         "@_tests": "4",
-        "@_time": "15.466",
+        "@_time": "15.045",
         "@_failures": "3"
       }
     ],
     "@_name": "Mocha Tests",
-    "@_time": "15.470",
+    "@_time": "15.049",
     "@_tests": "4",
     "@_failures": "3"
   }

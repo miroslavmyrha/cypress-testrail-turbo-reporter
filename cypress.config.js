@@ -6,8 +6,7 @@ const axios = require('axios').default
 module.exports = defineConfig({
   reporter: 'junit',
   reporterOptions: {
-    mochaFile: 'results/my-test-output.xml',
-    toConsole: true,
+    mochaFile: 'results/my-test-output.xml'
   },
   // setupNodeEvents can be defined in either
   // the e2e or component configuration
@@ -15,14 +14,11 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       on('after:spec', (spec, results) => {
         if (results) {
-          console.log('after:spec hook was called')
           fs.readFile('./results/my-test-output.xml', 'utf8', function(err, xmlData) { 
             if (err) {
               console.log('err')
             } else {
               // Display the file content 
-              console.log(xmlData)
-              console.log('xmlData has been readed.')
 
               const options = {
                 ignoreAttributes: false
@@ -45,7 +41,7 @@ module.exports = defineConfig({
 
               testCases.forEach((testCase, index) => {
                 const caseLabelLength = testCase['@_classname'].length
-                // number case label in format(Cxxxx)
+                // ID case label in format(Cxxxx)
                 const sliceOnlyCaseID = testCase['@_classname'].slice(0, -(caseLabelLength - 5))
 
                 if (testCases[index].failure) {
@@ -62,6 +58,51 @@ module.exports = defineConfig({
                 ),
                 'utf-8'
               )
+
+              axios({
+                method: 'get',
+                url: 'https://reqres.in/api/users?page=2',
+                headers: { 'Content-Type': 'application/json' }
+              })
+              .then(function (response) {
+                return response
+              })
+
+              // axios.get('https://reqres.in/api/users?page=2')
+              //   .then(function (response) {
+              //     // handle success
+              //     console.log(response)
+              //   })
+              //   .catch(function (error) {
+              //     // handle error
+              //     console.log(error)
+              //   })
+              //   .finally(function () {
+              //     console.log('finished! :)')
+              //   })
+
+
+              // axios.get('https://my-api.com/cats')
+              // .then(function (response) {
+              //   // handle success
+              //   console.log(response)
+
+              //   fs.writeFileSync(
+              //     './results/from-axios.json', 
+              //     JSON.stringify(
+              //       response, null, 2
+              //     ),
+              //     'utf-8'
+              //   )
+              // })
+              // .catch(function (error) {
+              //   // handle error
+              //   console.log(error)
+              // })
+              // .finally(function () {
+              //   // always executed
+              // })
+
             }
           })
         }
