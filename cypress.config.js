@@ -1,7 +1,8 @@
 const { defineConfig } = require('cypress')
 const fs = require('fs')
 const { XMLParser } = require('fast-xml-parser')
-const axios = require('axios').default
+const axios = require('axios')
+const https = require('node:https')
 
 module.exports = defineConfig({
   reporter: 'junit',
@@ -12,7 +13,7 @@ module.exports = defineConfig({
   // the e2e or component configuration
   e2e: {
     setupNodeEvents(on, config) {
-      on('after:spec', (spec, results) => {
+      on('after:spec', async (spec, results) => {
         if (results) {
           fs.readFile('./results/my-test-output.xml', 'utf8', function(err, xmlData) { 
             if (err) {
@@ -59,14 +60,35 @@ module.exports = defineConfig({
                 'utf-8'
               )
 
-              axios({
-                method: 'get',
-                url: 'https://reqres.in/api/users?page=2',
-                headers: { 'Content-Type': 'application/json' }
-              })
-              .then(function (response) {
-                return response
-              })
+              // axios({
+              //   method: 'get',
+              //   url: 'https://reqres.in/api/users?page=2',
+              //   headers: { 'Content-Type': 'application/json' }
+              // })
+              // .then(function (response) {
+              //   return response
+              // })
+
+
+                     
+
+
+              // axios.get('https://reqres.in/api/users?page=2')
+              //   .then(function (response) {
+              //     // handle success
+              //     console.log(response)
+              //   })
+              //   .catch(function (error) {
+              //     // handle error
+              //     console.log(error)
+              //   })
+              //   .finally(function () {
+              //     console.log('finished! :)')
+              //   })
+
+
+
+
 
               // axios.get('https://reqres.in/api/users?page=2')
               //   .then(function (response) {
@@ -105,6 +127,18 @@ module.exports = defineConfig({
 
             }
           })
+
+          async function getUser() {
+            try {
+              const response = await axios.get('https://reqres.in/api/users?page=2');
+              console.log(response.data);
+            } catch (error) {
+              console.error(error);
+            }
+          }
+
+          await getUser()     
+
         }
       })
     }

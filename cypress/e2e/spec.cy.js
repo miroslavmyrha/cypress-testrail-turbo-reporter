@@ -18,4 +18,10 @@ describe('template spec', () => {
   it('C9989 - test 4', () => {
     cy.get('nevim')
   })
+
+  it('C2277 - ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt t', () => {
+    cy.request('https://reqres.in/api/users?page=2').then(response => {
+      console.log(response)
+    })
+  })
 })

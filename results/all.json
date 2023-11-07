@@ -7,7 +7,7 @@
     "testsuite": [
       {
         "@_name": "Root Suite",
-        "@_timestamp": "2023-11-05T22:31:03",
+        "@_timestamp": "2023-11-06T14:48:47",
         "@_tests": "0",
         "@_file": "cypress\\e2e\\spec.cy.js",
         "@_time": "0.000",
@@ -37,7 +37,7 @@
           },
           {
             "@_name": "template spec C9988 - test 3",
-            "@_time": "0.106",
+            "@_time": "0.134",
             "@_classname": "C9988 - test 3"
           },
           {
@@ -49,18 +49,23 @@
             "@_name": "template spec C9989 - test 4",
             "@_time": "0.000",
             "@_classname": "C9989 - test 4"
+          },
+          {
+            "@_name": "template spec C2277 - ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt t",
+            "@_time": "0.323",
+            "@_classname": "C2277 - ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt t"
           }
         ],
         "@_name": "template spec",
-        "@_timestamp": "2023-11-05T22:31:03",
-        "@_tests": "4",
-        "@_time": "15.045",
+        "@_timestamp": "2023-11-06T14:48:47",
+        "@_tests": "5",
+        "@_time": "15.339",
         "@_failures": "3"
       }
     ],
     "@_name": "Mocha Tests",
-    "@_time": "15.049",
-    "@_tests": "4",
+    "@_time": "15.343",
+    "@_tests": "5",
     "@_failures": "3"
   }
 }
