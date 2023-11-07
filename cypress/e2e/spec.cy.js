@@ -3,37 +3,53 @@ describe('template spec', () => {
     cy.visit('https://example.cypress.io')
   })
 
-  it('C9039 - test 1', () => {
+  it('C1 - test first', () => {
     cy.get('non existing element')
   })
 
-  it('C9099 - test 2', () => {
+  it('C2 - test second', () => {
     cy.get('')
   })
 
-  it('C9988 - test 3', () => {
+  it('C3 - test third', () => {
     cy.get('h1').should('exist').and('be.visible')
   })
 
-  it('C9989 - test 4', () => {
+  it('C4 - test fourth', () => {
     cy.get('nevim')
   })
 
-  it('C2277 - ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt, this title is sooooo loooong.', () => {
+  it('C5 - ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt, this title is sooooo loooong.', () => {
     cy.request('https://reqres.in/api/users?page=2').then(response => {
-      console.log(response)
+      cy.log(response)
     })
   })
 
-  it('C999', () => {
-
+  it('C6 text', () => {
+    cy.get('h1').should('exist').and('be.visible')
   })
 
-  it('C99', () => {
-  
+  it('C7text', () => {
+    cy.get('h1').should('exist').and('be.visible')
+  })
+
+  it('CC77text', () => {
+    cy.get('h1').should('exist').and('be.visible')
   })
 
   it('C9', () => {
-  
+    cy.get('h10').should('exist').and('be.visible')
+  })
+
+  it('C10', () => {
+    cy.get('h1').should('exist').and('be.visible')
+  })
+
+  it('C11', () => {
+    cy.get('0').should('exist').and('be.visible')
+  })
+
+  it('C12', () => {
+    cy.get('0').should('exist').and('be.visible')
   })
 })

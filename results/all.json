@@ -7,7 +7,7 @@
     "testsuite": [
       {
         "@_name": "Root Suite",
-        "@_timestamp": "2023-11-07T17:16:14",
+        "@_timestamp": "2023-11-07T22:00:36",
         "@_tests": "0",
         "@_file": "cypress\\e2e\\spec.cy.js",
         "@_time": "0.000",
@@ -21,9 +21,9 @@
               "@_message": "Timed out retrying after 4000ms: Expected to find element: `non existing element`, but never found it.",
               "@_type": "AssertionError"
             },
-            "@_name": "template spec C9039 - test 1",
+            "@_name": "template spec C1 - test first",
             "@_time": "0.000",
-            "@_classname": "C9039 - test 1"
+            "@_classname": "C1 - test first"
           },
           {
             "failure": {
@@ -31,14 +31,14 @@
               "@_message": "Timed out retrying after 4000ms: Expected to find element: ``, but never found it.",
               "@_type": "AssertionError"
             },
-            "@_name": "template spec C9099 - test 2",
+            "@_name": "template spec C2 - test second",
             "@_time": "0.000",
-            "@_classname": "C9099 - test 2"
+            "@_classname": "C2 - test second"
           },
           {
-            "@_name": "template spec C9988 - test 3",
-            "@_time": "0.141",
-            "@_classname": "C9988 - test 3"
+            "@_name": "template spec C3 - test third",
+            "@_time": "0.117",
+            "@_classname": "C3 - test third"
           },
           {
             "failure": {
@@ -46,41 +46,76 @@
               "@_message": "Timed out retrying after 4000ms: Expected to find element: `nevim`, but never found it.",
               "@_type": "AssertionError"
             },
-            "@_name": "template spec C9989 - test 4",
+            "@_name": "template spec C4 - test fourth",
             "@_time": "0.000",
-            "@_classname": "C9989 - test 4"
+            "@_classname": "C4 - test fourth"
           },
           {
-            "@_name": "template spec C2277 - ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt, this title is sooooo loooong.",
-            "@_time": "0.245",
-            "@_classname": "C2277 - ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt, this title is sooooo loooong."
+            "@_name": "template spec C5 - ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt, this title is sooooo loooong.",
+            "@_time": "0.190",
+            "@_classname": "C5 - ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt, this title is sooooo loooong."
           },
           {
-            "@_name": "template spec C999",
-            "@_time": "0.130",
-            "@_classname": "C999"
+            "@_name": "template spec C6 text",
+            "@_time": "0.120",
+            "@_classname": "C6 text"
           },
           {
-            "@_name": "template spec C99",
-            "@_time": "0.126",
-            "@_classname": "C99"
+            "@_name": "template spec C7text",
+            "@_time": "0.113",
+            "@_classname": "C7text"
           },
           {
+            "@_name": "template spec CC77text",
+            "@_time": "0.121",
+            "@_classname": "CC77text"
+          },
+          {
+            "failure": {
+              "#text": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `h10`, but never found it.\n    at Context.eval (webpack://cypress-testrail-turbo-reporter/./cypress/e2e/spec.cy.js:41:18)",
+              "@_message": "Timed out retrying after 4000ms: Expected to find element: `h10`, but never found it.",
+              "@_type": "AssertionError"
+            },
             "@_name": "template spec C9",
-            "@_time": "0.133",
+            "@_time": "0.000",
             "@_classname": "C9"
+          },
+          {
+            "@_name": "template spec C10",
+            "@_time": "0.112",
+            "@_classname": "C10"
+          },
+          {
+            "failure": {
+              "#text": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `0`, but never found it.\n    at Context.eval (webpack://cypress-testrail-turbo-reporter/./cypress/e2e/spec.cy.js:49:16)",
+              "@_message": "Timed out retrying after 4000ms: Expected to find element: `0`, but never found it.",
+              "@_type": "AssertionError"
+            },
+            "@_name": "template spec C11",
+            "@_time": "0.000",
+            "@_classname": "C11"
+          },
+          {
+            "failure": {
+              "#text": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `0`, but never found it.\n    at Context.eval (webpack://cypress-testrail-turbo-reporter/./cypress/e2e/spec.cy.js:53:16)",
+              "@_message": "Timed out retrying after 4000ms: Expected to find element: `0`, but never found it.",
+              "@_type": "AssertionError"
+            },
+            "@_name": "template spec C12",
+            "@_time": "0.000",
+            "@_classname": "C12"
           }
         ],
         "@_name": "template spec",
-        "@_timestamp": "2023-11-07T17:16:14",
-        "@_tests": "8",
-        "@_time": "15.924",
-        "@_failures": "3"
+        "@_timestamp": "2023-11-07T22:00:36",
+        "@_tests": "12",
+        "@_time": "29.005",
+        "@_failures": "6"
       }
     ],
     "@_name": "Mocha Tests",
-    "@_time": "15.929",
-    "@_tests": "8",
-    "@_failures": "3"
+    "@_time": "29.008",
+    "@_tests": "12",
+    "@_failures": "6"
   }
 }

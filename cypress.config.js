@@ -9,10 +9,6 @@ module.exports = defineConfig({
   reporterOptions: {
     mochaFile: 'results/my-test-output.xml'
   },
-  // reporter: 'junit',
-  // reporterOptions: {
-  //   mochaFile: 'results/my-test-output.xml'
-  // },
   // setupNodeEvents can be defined in either
   // the e2e or component configuration
   e2e: {
@@ -45,14 +41,13 @@ module.exports = defineConfig({
               let objectOfTestCases = {}
 
               testCases.forEach((testCase, index) => {
-                const caseLabelLength = testCase['@_classname'].length
-                // ID case label in format(Cxxxx)
-                const sliceOnlyCaseID = testCase['@_classname'].slice(0, -(caseLabelLength - 5))
-
+                let regexpCaseID = /C\d+/
+                const onlyCaseId = testCase['@_classname'].match(regexpCaseID)
+    
                 if (testCases[index].failure) {
-                  objectOfTestCases[sliceOnlyCaseID] = 'failure'
+                  objectOfTestCases[onlyCaseId[0]] = 'failure'
                 } else {
-                  objectOfTestCases[sliceOnlyCaseID] = ''
+                  objectOfTestCases[onlyCaseId[0]] = ''
                 }
               })
 
