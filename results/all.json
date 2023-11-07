@@ -7,7 +7,7 @@
     "testsuite": [
       {
         "@_name": "Root Suite",
-        "@_timestamp": "2023-11-06T14:48:47",
+        "@_timestamp": "2023-11-07T17:16:14",
         "@_tests": "0",
         "@_file": "cypress\\e2e\\spec.cy.js",
         "@_time": "0.000",
@@ -37,7 +37,7 @@
           },
           {
             "@_name": "template spec C9988 - test 3",
-            "@_time": "0.134",
+            "@_time": "0.141",
             "@_classname": "C9988 - test 3"
           },
           {
@@ -51,21 +51,36 @@
             "@_classname": "C9989 - test 4"
           },
           {
-            "@_name": "template spec C2277 - ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt t",
-            "@_time": "0.323",
-            "@_classname": "C2277 - ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt t"
+            "@_name": "template spec C2277 - ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt, this title is sooooo loooong.",
+            "@_time": "0.245",
+            "@_classname": "C2277 - ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt, this title is sooooo loooong."
+          },
+          {
+            "@_name": "template spec C999",
+            "@_time": "0.130",
+            "@_classname": "C999"
+          },
+          {
+            "@_name": "template spec C99",
+            "@_time": "0.126",
+            "@_classname": "C99"
+          },
+          {
+            "@_name": "template spec C9",
+            "@_time": "0.133",
+            "@_classname": "C9"
           }
         ],
         "@_name": "template spec",
-        "@_timestamp": "2023-11-06T14:48:47",
-        "@_tests": "5",
-        "@_time": "15.339",
+        "@_timestamp": "2023-11-07T17:16:14",
+        "@_tests": "8",
+        "@_time": "15.924",
         "@_failures": "3"
       }
     ],
     "@_name": "Mocha Tests",
-    "@_time": "15.343",
-    "@_tests": "5",
+    "@_time": "15.929",
+    "@_tests": "8",
     "@_failures": "3"
   }
 }

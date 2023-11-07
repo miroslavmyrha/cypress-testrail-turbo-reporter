@@ -19,9 +19,21 @@ describe('template spec', () => {
     cy.get('nevim')
   })
 
-  it('C2277 - ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt t', () => {
+  it('C2277 - ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt, this title is sooooo loooong.', () => {
     cy.request('https://reqres.in/api/users?page=2').then(response => {
       console.log(response)
     })
+  })
+
+  it('C999', () => {
+
+  })
+
+  it('C99', () => {
+  
+  })
+
+  it('C9', () => {
+  
   })
 })

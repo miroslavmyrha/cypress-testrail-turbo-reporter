@@ -2,13 +2,17 @@ const { defineConfig } = require('cypress')
 const fs = require('fs')
 const { XMLParser } = require('fast-xml-parser')
 const axios = require('axios')
-const https = require('node:https')
+const dotenv = require('dotenv')
 
 module.exports = defineConfig({
   reporter: 'junit',
   reporterOptions: {
     mochaFile: 'results/my-test-output.xml'
   },
+  // reporter: 'junit',
+  // reporterOptions: {
+  //   mochaFile: 'results/my-test-output.xml'
+  // },
   // setupNodeEvents can be defined in either
   // the e2e or component configuration
   e2e: {
@@ -59,85 +63,28 @@ module.exports = defineConfig({
                 ),
                 'utf-8'
               )
-
-              // axios({
-              //   method: 'get',
-              //   url: 'https://reqres.in/api/users?page=2',
-              //   headers: { 'Content-Type': 'application/json' }
-              // })
-              // .then(function (response) {
-              //   return response
-              // })
-
-
-                     
-
-
-              // axios.get('https://reqres.in/api/users?page=2')
-              //   .then(function (response) {
-              //     // handle success
-              //     console.log(response)
-              //   })
-              //   .catch(function (error) {
-              //     // handle error
-              //     console.log(error)
-              //   })
-              //   .finally(function () {
-              //     console.log('finished! :)')
-              //   })
-
-
-
-
-
-              // axios.get('https://reqres.in/api/users?page=2')
-              //   .then(function (response) {
-              //     // handle success
-              //     console.log(response)
-              //   })
-              //   .catch(function (error) {
-              //     // handle error
-              //     console.log(error)
-              //   })
-              //   .finally(function () {
-              //     console.log('finished! :)')
-              //   })
-
-
-              // axios.get('https://my-api.com/cats')
-              // .then(function (response) {
-              //   // handle success
-              //   console.log(response)
-
-              //   fs.writeFileSync(
-              //     './results/from-axios.json', 
-              //     JSON.stringify(
-              //       response, null, 2
-              //     ),
-              //     'utf-8'
-              //   )
-              // })
-              // .catch(function (error) {
-              //   // handle error
-              //   console.log(error)
-              // })
-              // .finally(function () {
-              //   // always executed
-              // })
-
             }
           })
 
-          async function getUser() {
+          dotenv.config()
+
+          async function login() {
             try {
-              const response = await axios.get('https://reqres.in/api/users?page=2');
-              console.log(response.data);
+              await axios.post(process.env.TR_URL, {
+                user: process.env.TR_USERNAME,
+                password: process.env.TR_PASSWORD
+               },
+               {
+                 headers: {
+                   'Content-Type': 'application/json'
+                 }
+               })
             } catch (error) {
-              console.error(error);
+              console.error(error)
             }
           }
 
-          await getUser()     
+          await login()
 
         }
       })
