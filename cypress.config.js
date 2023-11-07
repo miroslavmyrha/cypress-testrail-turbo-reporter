@@ -36,21 +36,24 @@ module.exports = defineConfig({
                 'utf-8'
               )
 
-              const testCases = jObj.testsuites.testsuite[1].testcase
-
               let objectOfTestCases = {}
 
-              testCases.forEach((testCase, index) => {
-                let regexpCaseID = /C\d+/
-                const onlyCaseId = testCase['@_classname'].match(regexpCaseID)
-    
-                if (testCases[index].failure) {
-                  objectOfTestCases[onlyCaseId[0]] = 'failure'
-                } else {
-                  objectOfTestCases[onlyCaseId[0]] = ''
-                }
-              })
-
+              for (countOfTestSuite = 1; countOfTestSuite < jObj.testsuites.testsuite.length; countOfTestSuite++) {
+                const testCases = jObj.testsuites.testsuite[countOfTestSuite].testcase
+                console.log(jObj.testsuites.testsuite.length)
+  
+                for (let countOfTestCases = 0; countOfTestCases < jObj.testsuites.testsuite[countOfTestSuite].testcase.length; countOfTestCases++) {
+                  const regexpCaseID = /C\d+/
+                  const onlyCaseID = testCases[countOfTestCases]['@_classname'].match(regexpCaseID)
+      
+                  if (testCases[countOfTestCases].failure) {
+                    objectOfTestCases[onlyCaseID[0]] = 'failure'
+                  } else {
+                    objectOfTestCases[onlyCaseID[0]] = ''
+                  }
+                } 
+              }
+             
               fs.writeFileSync(
                 './results/my-test-output.json', 
                 JSON.stringify(
@@ -63,23 +66,23 @@ module.exports = defineConfig({
 
           dotenv.config()
 
-          async function login() {
-            try {
-              await axios.post(process.env.TR_URL, {
-                user: process.env.TR_USERNAME,
-                password: process.env.TR_PASSWORD
-               },
-               {
-                 headers: {
-                   'Content-Type': 'application/json'
-                 }
-               })
-            } catch (error) {
-              console.error(error)
-            }
-          }
+          // async function login() {
+          //   try {
+          //     await axios.post(process.env.TR_URL, {
+          //       user: process.env.TR_USERNAME,
+          //       password: process.env.TR_PASSWORD
+          //      },
+          //      {
+          //        headers: {
+          //          'Content-Type': 'application/json'
+          //        }
+          //      })
+          //   } catch (error) {
+          //     console.error(error)
+          //   }
+          // }
 
-          await login()
+          // await login()
 
         }
       })

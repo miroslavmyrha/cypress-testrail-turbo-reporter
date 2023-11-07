@@ -52,4 +52,24 @@ describe('template spec', () => {
   it('C12', () => {
     cy.get('0').should('exist').and('be.visible')
   })
+
+  describe('test', () => {
+    it('C1234 - toto je dalsi zanoreny text', () => {
+      cy.get('zanorene')
+    })
+
+    it('C321', () => {
+      cy.get('test')
+    })
+  })
+
+  context('test2', () => {
+    it('C4321 - something', () => {
+      cy.get('zanorene')
+    })
+
+    it('C00999 - test something', () => {
+      cy.get('something')
+    })
+  })
 })

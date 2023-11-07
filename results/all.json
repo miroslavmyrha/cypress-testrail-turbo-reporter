@@ -7,7 +7,7 @@
     "testsuite": [
       {
         "@_name": "Root Suite",
-        "@_timestamp": "2023-11-07T22:00:36",
+        "@_timestamp": "2023-11-07T23:42:48",
         "@_tests": "0",
         "@_file": "cypress\\e2e\\spec.cy.js",
         "@_time": "0.000",
@@ -37,7 +37,7 @@
           },
           {
             "@_name": "template spec C3 - test third",
-            "@_time": "0.117",
+            "@_time": "0.122",
             "@_classname": "C3 - test third"
           },
           {
@@ -52,22 +52,22 @@
           },
           {
             "@_name": "template spec C5 - ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt, this title is sooooo loooong.",
-            "@_time": "0.190",
+            "@_time": "0.304",
             "@_classname": "C5 - ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt, this title is sooooo loooong."
           },
           {
             "@_name": "template spec C6 text",
-            "@_time": "0.120",
+            "@_time": "0.107",
             "@_classname": "C6 text"
           },
           {
             "@_name": "template spec C7text",
-            "@_time": "0.113",
+            "@_time": "0.101",
             "@_classname": "C7text"
           },
           {
             "@_name": "template spec CC77text",
-            "@_time": "0.121",
+            "@_time": "0.111",
             "@_classname": "CC77text"
           },
           {
@@ -82,7 +82,7 @@
           },
           {
             "@_name": "template spec C10",
-            "@_time": "0.112",
+            "@_time": "0.107",
             "@_classname": "C10"
           },
           {
@@ -107,15 +107,73 @@
           }
         ],
         "@_name": "template spec",
-        "@_timestamp": "2023-11-07T22:00:36",
+        "@_timestamp": "2023-11-07T23:42:48",
         "@_tests": "12",
-        "@_time": "29.005",
+        "@_time": "0.000",
         "@_failures": "6"
+      },
+      {
+        "testcase": [
+          {
+            "failure": {
+              "#text": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `zanorene`, but never found it.\n    at Context.eval (webpack://cypress-testrail-turbo-reporter/./cypress/e2e/spec.cy.js:58:9)",
+              "@_message": "Timed out retrying after 4000ms: Expected to find element: `zanorene`, but never found it.",
+              "@_type": "AssertionError"
+            },
+            "@_name": "template spec test C1234 - toto je dalsi zanoreny text",
+            "@_time": "0.000",
+            "@_classname": "C1234 - toto je dalsi zanoreny text"
+          },
+          {
+            "failure": {
+              "#text": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `test`, but never found it.\n    at Context.eval (webpack://cypress-testrail-turbo-reporter/./cypress/e2e/spec.cy.js:62:9)",
+              "@_message": "Timed out retrying after 4000ms: Expected to find element: `test`, but never found it.",
+              "@_type": "AssertionError"
+            },
+            "@_name": "template spec test C321",
+            "@_time": "0.000",
+            "@_classname": "C321"
+          }
+        ],
+        "@_name": "test",
+        "@_timestamp": "2023-11-07T23:43:16",
+        "@_tests": "2",
+        "@_time": "8.573",
+        "@_failures": "2"
+      },
+      {
+        "testcase": [
+          {
+            "failure": {
+              "#text": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `zanorene`, but never found it.\n    at Context.eval (webpack://cypress-testrail-turbo-reporter/./cypress/e2e/spec.cy.js:68:9)",
+              "@_message": "Timed out retrying after 4000ms: Expected to find element: `zanorene`, but never found it.",
+              "@_type": "AssertionError"
+            },
+            "@_name": "template spec test2 C4321 - something",
+            "@_time": "0.000",
+            "@_classname": "C4321 - something"
+          },
+          {
+            "failure": {
+              "#text": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `something`, but never found it.\n    at Context.eval (webpack://cypress-testrail-turbo-reporter/./cypress/e2e/spec.cy.js:72:9)",
+              "@_message": "Timed out retrying after 4000ms: Expected to find element: `something`, but never found it.",
+              "@_type": "AssertionError"
+            },
+            "@_name": "template spec test2 C00999 - test something",
+            "@_time": "0.000",
+            "@_classname": "C00999 - test something"
+          }
+        ],
+        "@_name": "test2",
+        "@_timestamp": "2023-11-07T23:43:25",
+        "@_tests": "2",
+        "@_time": "8.649",
+        "@_failures": "2"
       }
     ],
     "@_name": "Mocha Tests",
-    "@_time": "29.008",
-    "@_tests": "12",
-    "@_failures": "6"
+    "@_time": "45.855",
+    "@_tests": "16",
+    "@_failures": "10"
   }
 }
