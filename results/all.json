@@ -7,7 +7,7 @@
     "testsuite": [
       {
         "@_name": "Root Suite",
-        "@_timestamp": "2023-11-07T23:42:48",
+        "@_timestamp": "2023-11-11T22:03:25",
         "@_tests": "0",
         "@_file": "cypress\\e2e\\spec.cy.js",
         "@_time": "0.000",
@@ -37,7 +37,7 @@
           },
           {
             "@_name": "template spec C3 - test third",
-            "@_time": "0.122",
+            "@_time": "0.111",
             "@_classname": "C3 - test third"
           },
           {
@@ -52,22 +52,22 @@
           },
           {
             "@_name": "template spec C5 - ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt, this title is sooooo loooong.",
-            "@_time": "0.304",
+            "@_time": "0.207",
             "@_classname": "C5 - ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt, this title is sooooo loooong."
           },
           {
             "@_name": "template spec C6 text",
-            "@_time": "0.107",
+            "@_time": "0.125",
             "@_classname": "C6 text"
           },
           {
             "@_name": "template spec C7text",
-            "@_time": "0.101",
+            "@_time": "0.133",
             "@_classname": "C7text"
           },
           {
             "@_name": "template spec CC77text",
-            "@_time": "0.111",
+            "@_time": "0.128",
             "@_classname": "CC77text"
           },
           {
@@ -82,7 +82,7 @@
           },
           {
             "@_name": "template spec C10",
-            "@_time": "0.107",
+            "@_time": "0.110",
             "@_classname": "C10"
           },
           {
@@ -107,7 +107,7 @@
           }
         ],
         "@_name": "template spec",
-        "@_timestamp": "2023-11-07T23:42:48",
+        "@_timestamp": "2023-11-11T22:03:25",
         "@_tests": "12",
         "@_time": "0.000",
         "@_failures": "6"
@@ -136,9 +136,9 @@
           }
         ],
         "@_name": "test",
-        "@_timestamp": "2023-11-07T23:43:16",
+        "@_timestamp": "2023-11-11T22:03:54",
         "@_tests": "2",
-        "@_time": "8.573",
+        "@_time": "8.741",
         "@_failures": "2"
       },
       {
@@ -165,14 +165,14 @@
           }
         ],
         "@_name": "test2",
-        "@_timestamp": "2023-11-07T23:43:25",
+        "@_timestamp": "2023-11-11T22:04:02",
         "@_tests": "2",
-        "@_time": "8.649",
+        "@_time": "8.682",
         "@_failures": "2"
       }
     ],
     "@_name": "Mocha Tests",
-    "@_time": "45.855",
+    "@_time": "46.192",
     "@_tests": "16",
     "@_failures": "10"
   }

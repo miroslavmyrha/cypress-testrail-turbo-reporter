@@ -38,11 +38,11 @@ module.exports = defineConfig({
 
               let objectOfTestCases = {}
 
-              for (countOfTestSuite = 1; countOfTestSuite < jObj.testsuites.testsuite.length; countOfTestSuite++) {
-                const testCases = jObj.testsuites.testsuite[countOfTestSuite].testcase
+              for (let countOfTestSuites = 1; countOfTestSuites < jObj.testsuites.testsuite.length; countOfTestSuites++) {
+                const testCases = jObj.testsuites.testsuite[countOfTestSuites].testcase
                 console.log(jObj.testsuites.testsuite.length)
   
-                for (let countOfTestCases = 0; countOfTestCases < jObj.testsuites.testsuite[countOfTestSuite].testcase.length; countOfTestCases++) {
+                for (let countOfTestCases = 0; countOfTestCases < jObj.testsuites.testsuite[countOfTestSuites].testcase.length; countOfTestCases++) {
                   const regexpCaseID = /C\d+/
                   const onlyCaseID = testCases[countOfTestCases]['@_classname'].match(regexpCaseID)
       
@@ -53,6 +53,8 @@ module.exports = defineConfig({
                   }
                 } 
               }
+
+
              
               fs.writeFileSync(
                 './results/my-test-output.json', 
@@ -66,24 +68,50 @@ module.exports = defineConfig({
 
           dotenv.config()
 
-          // async function login() {
-          //   try {
-          //     await axios.post(process.env.TR_URL, {
-          //       user: process.env.TR_USERNAME,
-          //       password: process.env.TR_PASSWORD
-          //      },
-          //      {
-          //        headers: {
-          //          'Content-Type': 'application/json'
-          //        }
-          //      })
-          //   } catch (error) {
-          //     console.error(error)
-          //   }
-          // }
+          const testrailRunURL = process.env.TR_URL
+          const testrailResultsURL = process.env.TR_RESULTS
+          const closingTestrun = process.env.TR_CLOSE_TESTRUN
 
-          // await login()
+          const testrailResultsTest1 = {
+            "results": [
+              {
+                "case_id": 1,
+                "status_id": 1
+              },
+              {
+                "case_id": 2,
+                "status_id": 5
+              }
+            ]
+          }
 
+          // create testrun
+
+          const dataToCreateTestrun =  {
+            "suite_id": 1,
+            "name": "New test run",
+            "description": "Test run description"
+          }
+
+          const auth = Buffer.from(`${process.env.TR_USERNAME}:${process.env.TR_PASSWORD}`).toString('base64')
+
+          async function createPostRequestTo(testrailRunURL, dataToCreateTestrun) {
+            try {
+              await axios.post(testrailRunURL, dataToCreateTestrun, {
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Basic ${auth}`
+                } 
+              }
+             )
+            } catch (error) {
+              console.error(error)
+            }
+          }
+
+          await createPostRequestTo(testrailRunURL, dataToCreateTestrun)
+          await createPostRequestTo(testrailResultsURL, testrailResultsTest1)
+          await createPostRequestTo(closingTestrun, '')
         }
       })
     }
