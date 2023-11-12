@@ -39,6 +39,8 @@ module.exports = defineConfig({
                 "results": []
               }
 
+              let status_id_result = ''
+
               for (let countOfTestSuites = 1; countOfTestSuites < jObj.testsuites.testsuite.length; countOfTestSuites++) {
                 const testCases = jObj.testsuites.testsuite[countOfTestSuites].testcase
   
@@ -48,19 +50,16 @@ module.exports = defineConfig({
 
                   // 5 - failed, 1 - passed
                   if (testCases[countOfTestCases].failure) {
-                    const objectToAppend = {
-                      'case_id': Number(onlyCaseID[0].slice(1)),
-                      'status_id': 5
-                    }
-                    objectOfTestCases.results.push(objectToAppend)
-
+                    status_id_result = 5
                   } else {
-                    const objectToAppend = {
-                      'case_id': Number(onlyCaseID[0].slice(1)),
-                      'status_id': 1
-                    }
-                    objectOfTestCases.results.push(objectToAppend)
+                    status_id_result = 1
                   }
+
+                  const objectToAppend = {
+                    'case_id': Number(onlyCaseID[0].slice(1)),
+                    'status_id': status_id_result 
+                  }
+                  objectOfTestCases.results.push(objectToAppend)
                 } 
               }
              
