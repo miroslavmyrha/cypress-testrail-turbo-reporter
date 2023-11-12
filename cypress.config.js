@@ -19,8 +19,7 @@ module.exports = defineConfig({
             if (err) {
               console.log('err')
             } else {
-              // Display the file content 
-
+  
               const options = {
                 ignoreAttributes: false
               }
@@ -36,25 +35,34 @@ module.exports = defineConfig({
                 'utf-8'
               )
 
-              let objectOfTestCases = {}
+              let objectOfTestCases = {
+                "results": []
+              }
 
               for (let countOfTestSuites = 1; countOfTestSuites < jObj.testsuites.testsuite.length; countOfTestSuites++) {
                 const testCases = jObj.testsuites.testsuite[countOfTestSuites].testcase
-                console.log(jObj.testsuites.testsuite.length)
   
                 for (let countOfTestCases = 0; countOfTestCases < jObj.testsuites.testsuite[countOfTestSuites].testcase.length; countOfTestCases++) {
                   const regexpCaseID = /C\d+/
                   const onlyCaseID = testCases[countOfTestCases]['@_classname'].match(regexpCaseID)
-      
+
+                  // 5 - failed, 1 - passed
                   if (testCases[countOfTestCases].failure) {
-                    objectOfTestCases[onlyCaseID[0]] = 'failure'
+                    const objectToAppend = {
+                      'case_id': Number(onlyCaseID[0].slice(1)),
+                      'status_id': 5
+                    }
+                    objectOfTestCases.results.push(objectToAppend)
+
                   } else {
-                    objectOfTestCases[onlyCaseID[0]] = ''
+                    const objectToAppend = {
+                      'case_id': Number(onlyCaseID[0].slice(1)),
+                      'status_id': 1
+                    }
+                    objectOfTestCases.results.push(objectToAppend)
                   }
                 } 
               }
-
-
              
               fs.writeFileSync(
                 './results/my-test-output.json', 
@@ -68,50 +76,41 @@ module.exports = defineConfig({
 
           dotenv.config()
 
-          const testrailRunURL = process.env.TR_URL
-          const testrailResultsURL = process.env.TR_RESULTS
-          const closingTestrun = process.env.TR_CLOSE_TESTRUN
-
-          const testrailResultsTest1 = {
-            "results": [
-              {
-                "case_id": 1,
-                "status_id": 1
-              },
-              {
-                "case_id": 2,
-                "status_id": 5
-              }
-            ]
-          }
+          const testrailRunAPIUrl = process.env.TR_URL
+          const testrailResultsAPIUrl = process.env.TR_RESULTS
+          const closingTestrunAPIUrl = process.env.TR_CLOSE_TESTRUN
 
           // create testrun
-
           const dataToCreateTestrun =  {
             "suite_id": 1,
             "name": "New test run",
             "description": "Test run description"
           }
 
-          const auth = Buffer.from(`${process.env.TR_USERNAME}:${process.env.TR_PASSWORD}`).toString('base64')
 
-          async function createPostRequestTo(testrailRunURL, dataToCreateTestrun) {
-            try {
-              await axios.post(testrailRunURL, dataToCreateTestrun, {
-                headers: {
-                  'Content-Type': 'application/json',
-                  'Authorization': `Basic ${auth}`
-                } 
-              }
-             )
-            } catch (error) {
-              console.error(error)
-            }
-          }
+          // https needed!
+          // const auth = Buffer.from(`${process.env.TR_USERNAME}:${process.env.TR_PASSWORD}`).toString('base64')
 
-          await createPostRequestTo(testrailRunURL, dataToCreateTestrun)
-          await createPostRequestTo(testrailResultsURL, testrailResultsTest1)
-          await createPostRequestTo(closingTestrun, '')
+          // async function makePostRequestTo(testrailAPIUrl, dataObject) {
+          //   try {
+          //     await axios.post(testrailAPIUrl, dataObject, {
+          //       headers: {
+          //         'Content-Type': 'application/json',
+          //         'Authorization': `Basic ${auth}`
+          //       } 
+          //     }
+          //    )
+          //   } catch (error) {
+          //     console.error(error)
+          //   }
+          // }
+
+          // // create testrun
+          // await makePostRequestTo(testrailRunAPIUrl, dataToCreateTestrun)
+          // // append results
+          // await makePostRequestTo(testrailResultsAPIUrl, testrailResultsTest1)
+          // // closing testrun
+          // await makePostRequestTo(closingTestrunAPIUrl, '')
         }
       })
     }

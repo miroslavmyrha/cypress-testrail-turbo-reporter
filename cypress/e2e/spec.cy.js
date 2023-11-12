@@ -33,43 +33,27 @@ describe('template spec', () => {
     cy.get('h1').should('exist').and('be.visible')
   })
 
-  it('CC77text', () => {
+  it('C8text', () => {
     cy.get('h1').should('exist').and('be.visible')
   })
-
-  it('C9', () => {
-    cy.get('h10').should('exist').and('be.visible')
-  })
-
-  it('C10', () => {
-    cy.get('h1').should('exist').and('be.visible')
-  })
-
-  it('C11', () => {
-    cy.get('0').should('exist').and('be.visible')
-  })
-
-  it('C12', () => {
-    cy.get('0').should('exist').and('be.visible')
-  })
-
+ 
   describe('test', () => {
-    it('C1234 - toto je dalsi zanoreny text', () => {
-      cy.get('zanorene')
+    it('C11', () => {
+      cy.get('0').should('exist').and('be.visible')
     })
-
-    it('C321', () => {
-      cy.get('test')
+  
+    it('C12', () => {
+      cy.get('0').should('exist').and('be.visible')
     })
   })
 
   context('test2', () => {
-    it('C4321 - something', () => {
-      cy.get('zanorene')
+    it('C9', () => {
+      cy.get('h10').should('exist').and('be.visible')
     })
-
-    it('C00999 - test something', () => {
-      cy.get('something')
+  
+    it('C10', () => {
+      cy.get('h1').should('exist').and('be.visible')
     })
   })
 })

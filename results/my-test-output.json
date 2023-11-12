@@ -1,18 +1,52 @@
 {
-  "C1": "failure",
-  "C2": "failure",
-  "C3": "",
-  "C4": "failure",
-  "C5": "",
-  "C6": "",
-  "C7": "",
-  "C77": "",
-  "C9": "failure",
-  "C10": "",
-  "C11": "failure",
-  "C12": "failure",
-  "C1234": "failure",
-  "C321": "failure",
-  "C4321": "failure",
-  "C00999": "failure"
+  "results": [
+    {
+      "case_id": 1,
+      "status_id": 5
+    },
+    {
+      "case_id": 2,
+      "status_id": 5
+    },
+    {
+      "case_id": 3,
+      "status_id": 1
+    },
+    {
+      "case_id": 4,
+      "status_id": 5
+    },
+    {
+      "case_id": 5,
+      "status_id": 1
+    },
+    {
+      "case_id": 6,
+      "status_id": 1
+    },
+    {
+      "case_id": 7,
+      "status_id": 1
+    },
+    {
+      "case_id": 8,
+      "status_id": 1
+    },
+    {
+      "case_id": 11,
+      "status_id": 5
+    },
+    {
+      "case_id": 12,
+      "status_id": 5
+    },
+    {
+      "case_id": 9,
+      "status_id": 5
+    },
+    {
+      "case_id": 10,
+      "status_id": 1
+    }
+  ]
 }
