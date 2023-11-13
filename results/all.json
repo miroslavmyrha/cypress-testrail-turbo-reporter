@@ -7,7 +7,7 @@
     "testsuite": [
       {
         "@_name": "Root Suite",
-        "@_timestamp": "2023-11-12T22:00:41",
+        "@_timestamp": "2023-11-13T21:30:25",
         "@_tests": "0",
         "@_file": "cypress\\e2e\\spec.cy.js",
         "@_time": "0.000",
@@ -37,7 +37,7 @@
           },
           {
             "@_name": "template spec C3 - test third",
-            "@_time": "0.114",
+            "@_time": "0.133",
             "@_classname": "C3 - test third"
           },
           {
@@ -52,27 +52,27 @@
           },
           {
             "@_name": "template spec C5 - ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt, this title is sooooo loooong.",
-            "@_time": "0.175",
+            "@_time": "0.235",
             "@_classname": "C5 - ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt, this title is sooooo loooong."
           },
           {
             "@_name": "template spec C6 text",
-            "@_time": "0.112",
+            "@_time": "0.117",
             "@_classname": "C6 text"
           },
           {
             "@_name": "template spec C7text",
-            "@_time": "0.115",
+            "@_time": "0.110",
             "@_classname": "C7text"
           },
           {
             "@_name": "template spec C8text",
-            "@_time": "0.124",
+            "@_time": "0.112",
             "@_classname": "C8text"
           }
         ],
         "@_name": "template spec",
-        "@_timestamp": "2023-11-12T22:00:41",
+        "@_timestamp": "2023-11-13T21:30:25",
         "@_tests": "8",
         "@_time": "0.000",
         "@_failures": "3"
@@ -101,9 +101,9 @@
           }
         ],
         "@_name": "test",
-        "@_timestamp": "2023-11-12T22:00:56",
+        "@_timestamp": "2023-11-13T21:30:41",
         "@_tests": "2",
-        "@_time": "8.560",
+        "@_time": "8.536",
         "@_failures": "2"
       },
       {
@@ -120,19 +120,19 @@
           },
           {
             "@_name": "template spec test2 C10",
-            "@_time": "0.127",
+            "@_time": "0.159",
             "@_classname": "C10"
           }
         ],
         "@_name": "test2",
-        "@_timestamp": "2023-11-12T22:01:05",
+        "@_timestamp": "2023-11-13T21:30:49",
         "@_tests": "2",
-        "@_time": "4.501",
+        "@_time": "4.544",
         "@_failures": "1"
       }
     ],
     "@_name": "Mocha Tests",
-    "@_time": "28.745",
+    "@_time": "28.938",
     "@_tests": "12",
     "@_failures": "6"
   }

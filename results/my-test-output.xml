@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="Mocha Tests" time="28.745" tests="12" failures="6">
-  <testsuite name="Root Suite" timestamp="2023-11-12T22:00:41" tests="0" file="cypress\e2e\spec.cy.js" time="0.000" failures="0">
+<testsuites name="Mocha Tests" time="28.938" tests="12" failures="6">
+  <testsuite name="Root Suite" timestamp="2023-11-13T21:30:25" tests="0" file="cypress\e2e\spec.cy.js" time="0.000" failures="0">
   </testsuite>
-  <testsuite name="template spec" timestamp="2023-11-12T22:00:41" tests="8" time="0.000" failures="3">
+  <testsuite name="template spec" timestamp="2023-11-13T21:30:25" tests="8" time="0.000" failures="3">
     <testcase name="template spec C1 - test first" time="0.000" classname="C1 - test first">
       <failure message="Timed out retrying after 4000ms: Expected to find element: `non existing element`, but never found it." type="AssertionError"><![CDATA[AssertionError: Timed out retrying after 4000ms: Expected to find element: `non existing element`, but never found it.
     at Context.eval (webpack://cypress-testrail-turbo-reporter/./cypress/e2e/spec.cy.js:7:7)]]></failure>
@@ -11,22 +11,22 @@
       <failure message="Timed out retrying after 4000ms: Expected to find element: ``, but never found it." type="AssertionError"><![CDATA[AssertionError: Timed out retrying after 4000ms: Expected to find element: ``, but never found it.
     at Context.eval (webpack://cypress-testrail-turbo-reporter/./cypress/e2e/spec.cy.js:11:7)]]></failure>
     </testcase>
-    <testcase name="template spec C3 - test third" time="0.114" classname="C3 - test third">
+    <testcase name="template spec C3 - test third" time="0.133" classname="C3 - test third">
     </testcase>
     <testcase name="template spec C4 - test fourth" time="0.000" classname="C4 - test fourth">
       <failure message="Timed out retrying after 4000ms: Expected to find element: `nevim`, but never found it." type="AssertionError"><![CDATA[AssertionError: Timed out retrying after 4000ms: Expected to find element: `nevim`, but never found it.
     at Context.eval (webpack://cypress-testrail-turbo-reporter/./cypress/e2e/spec.cy.js:19:7)]]></failure>
     </testcase>
-    <testcase name="template spec C5 - ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt, this title is sooooo loooong." time="0.175" classname="C5 - ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt, this title is sooooo loooong.">
+    <testcase name="template spec C5 - ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt, this title is sooooo loooong." time="0.235" classname="C5 - ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt, this title is sooooo loooong.">
     </testcase>
-    <testcase name="template spec C6 text" time="0.112" classname="C6 text">
+    <testcase name="template spec C6 text" time="0.117" classname="C6 text">
     </testcase>
-    <testcase name="template spec C7text" time="0.115" classname="C7text">
+    <testcase name="template spec C7text" time="0.110" classname="C7text">
     </testcase>
-    <testcase name="template spec C8text" time="0.124" classname="C8text">
+    <testcase name="template spec C8text" time="0.112" classname="C8text">
     </testcase>
   </testsuite>
-  <testsuite name="test" timestamp="2023-11-12T22:00:56" tests="2" time="8.560" failures="2">
+  <testsuite name="test" timestamp="2023-11-13T21:30:41" tests="2" time="8.536" failures="2">
     <testcase name="template spec test C11" time="0.000" classname="C11">
       <failure message="Timed out retrying after 4000ms: Expected to find element: `0`, but never found it." type="AssertionError"><![CDATA[AssertionError: Timed out retrying after 4000ms: Expected to find element: `0`, but never found it.
     at Context.eval (webpack://cypress-testrail-turbo-reporter/./cypress/e2e/spec.cy.js:42:18)]]></failure>
@@ -36,12 +36,12 @@
     at Context.eval (webpack://cypress-testrail-turbo-reporter/./cypress/e2e/spec.cy.js:46:18)]]></failure>
     </testcase>
   </testsuite>
-  <testsuite name="test2" timestamp="2023-11-12T22:01:05" tests="2" time="4.501" failures="1">
+  <testsuite name="test2" timestamp="2023-11-13T21:30:49" tests="2" time="4.544" failures="1">
     <testcase name="template spec test2 C9" time="0.000" classname="C9">
       <failure message="Timed out retrying after 4000ms: Expected to find element: `h10`, but never found it." type="AssertionError"><![CDATA[AssertionError: Timed out retrying after 4000ms: Expected to find element: `h10`, but never found it.
     at Context.eval (webpack://cypress-testrail-turbo-reporter/./cypress/e2e/spec.cy.js:52:20)]]></failure>
     </testcase>
-    <testcase name="template spec test2 C10" time="0.127" classname="C10">
+    <testcase name="template spec test2 C10" time="0.159" classname="C10">
     </testcase>
   </testsuite>
 </testsuites>
