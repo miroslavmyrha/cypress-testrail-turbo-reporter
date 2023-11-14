@@ -1,136 +1,87 @@
 const { defineConfig } = require('cypress')
-const fs = require('fs')
+const fs = require('fs').promises
 const { XMLParser } = require('fast-xml-parser')
 const axios = require('axios')
 const dotenv = require('dotenv')
+dotenv.config()
+
+const STATUS_PASSED = 1
+const STATUS_FAILED = 5
+
+async function parseXMLData(filePath) {
+  try {
+    const xmlData = await fs.readFile(filePath, 'utf8')
+    const parser = new XMLParser({ ignoreAttributes: false })
+    return parser.parse(xmlData)
+  } catch (err) {
+    throw new Error(`Error reading XML file: ${err.message}`)
+  }
+}
+
+function transformResultsToTestCases(jObj) {
+  const results = { results: [] }
+  const testSuites = jObj.testsuites.testsuite
+
+  testSuites.forEach(suite => {
+    suite.testcase.forEach(testCase => {
+      const caseIDMatch = testCase['@_classname'].match(/C\d+/)
+      if (!caseIDMatch) return
+
+      const status_id = testCase.failure ? STATUS_FAILED : STATUS_PASSED
+      results.results.push({
+        case_id: Number(caseIDMatch[0].slice(1)),
+        status_id,
+      })
+    })
+  })
+
+  return results
+}
+
+async function writeResultsToFile(filePath, data) {
+  try {
+    await fs.writeFile(filePath, JSON.stringify(data, null, 2), 'utf-8')
+  } catch (err) {
+    throw new Error(`Error writing to file ${filePath}: ${err.message}`)
+  }
+}
+
+async function makePostRequestTo(url, data) {
+  const auth = Buffer.from(`${process.env.TR_USERNAME}:${process.env.TR_PASSWORD}`).toString('base64')
+  const headers = {
+    'Content-Type': 'application/json',
+    'Authorization': `Basic ${auth}`,
+  };
+
+  try {
+    await axios.post(url, data, { headers })
+  } catch (error) {
+    throw new Error(`Error making POST request to ${url}: ${error.message}`)
+  }
+}
 
 module.exports = defineConfig({
   reporter: 'junit',
   reporterOptions: {
-    mochaFile: 'results/my-test-output.xml'
+    mochaFile: 'results/my-test-output.xml',
   },
-  // setupNodeEvents can be defined in either
-  // the e2e or component configuration
   e2e: {
-    setupNodeEvents(on, config) {
+    setupNodeEvents: async (on, config) => {
       on('after:run', async (spec, results) => {
-        if (results) {
-          // Read xml file with results
-          fs.readFile('./results/my-test-output.xml', 'utf8', function(err, xmlData) { 
-            if (err) {
-              console.log('err')
-            } else {
-  
-              // Parsing data with options and write to file
-              const options = {
-                ignoreAttributes: false
-              }
+        if (!results) return
 
-              const parser = new XMLParser(options)
-              const jObj = parser.parse(xmlData)
+        try {
+          const jObj = await parseXMLData('./results/my-test-output.xml')
+          const testCases = transformResultsToTestCases(jObj)
+          await writeResultsToFile('./results/all.json', jObj)
+          await writeResultsToFile('./results/my-test-output.json', testCases)
 
-              fs.writeFileSync(
-                './results/all.json', 
-                JSON.stringify(
-                  jObj, null, 2
-                ), 
-                'utf-8'
-              )
-
-              // Object of results frame (In typescript should be interface)  
-              let objectOfTestCases = {
-                "results": []
-              }
-
-              let status_id_result = ''
-
-              // Iteration over test suites to grab testCases
-              for (let countOfTestSuites = 1; countOfTestSuites < jObj.testsuites.testsuite.length; countOfTestSuites++) {
-                const testCases = jObj.testsuites.testsuite[countOfTestSuites].testcase
-                // Iteration over test cases and try regex match
-                for (let countOfTestCases = 0; countOfTestCases < jObj.testsuites.testsuite[countOfTestSuites].testcase.length; countOfTestCases++) {
-                  const regexpCaseID = /C\d+/
-                  const onlyCaseID = testCases[countOfTestCases]['@_classname'].match(regexpCaseID)
-
-                  // 5 - failed, 1 - passed
-                  if (testCases[countOfTestCases].failure) {
-                    status_id_result = 5
-                  } else {
-                    status_id_result = 1
-                  }
-
-                  // Create object of values and push it to array of results
-                  const objectToAppend = {
-                    'case_id': Number(onlyCaseID[0].slice(1)),
-                    'status_id': status_id_result 
-                  }
-                  objectOfTestCases.results.push(objectToAppend)
-                } 
-              }
-              // Write results to file
-              fs.writeFileSync(
-                './results/my-test-output.json', 
-                JSON.stringify(
-                  objectOfTestCases, null, 2
-                ),
-                'utf-8'
-              )
-            }
-          })
-
-          // Init enviroment variables needed to send results
-          dotenv.config()
-
-          const testrailRunAPIUrl = process.env.TR_URL
-          const testrailResultsAPIUrl = process.env.TR_RESULTS
-          const closingTestrunAPIUrl = process.env.TR_CLOSE_TESTRUN
-          const testrailGetTestrun = process.env.TR_GET_TESTRUN_ID
-
-          // Testrun options
-          const dataToCreateTestrun =  {
-            "suite_id": 1,
-            "name": "New test run",
-            "description": "Test run description"
-          }
-
-
-          // Https needed!
-          const auth = Buffer.from(`${process.env.TR_USERNAME}:${process.env.TR_PASSWORD}`).toString('base64')
-
-          axios.get(testrailGetTestrun, {
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Basic ${auth}`
-            } 
-          }).then(response => {
-            const testRuns = response.data 
-            const lastTestRun = testRuns[0]
-          }).catch(error => {
-            console.error('Error: ', error)
-          })
-
-          // Function which make POST request to Testrail api URLs
-          async function makePostRequestTo(testrailAPIUrl, dataObject) {
-            try {
-              await axios.post(testrailAPIUrl, dataObject, {
-                headers: {
-                  'Content-Type': 'application/json',
-                  'Authorization': `Basic ${auth}`
-                } 
-              })
-            } catch (error) {
-              console.error(error)
-            }
-          }
-
-          // Create testrun
-          await makePostRequestTo(testrailRunAPIUrl, dataToCreateTestrun)
-          // Append results
-          await makePostRequestTo(testrailResultsAPIUrl + (lastTestRun + 1), resultsObject)
-          // Closing testrun
-          await makePostRequestTo(closingTestrunAPIUrl + (lastTestRun + 1), '')
+          const testrailAPIUrl = process.env.TR_RESULTS
+          await makePostRequestTo(testrailAPIUrl, testCases)
+        } catch (error) {
+          console.error(`Error in 'after:run' event handler: ${error.message}`)
         }
       })
-    }
-  }
+    },
+  },
 })
