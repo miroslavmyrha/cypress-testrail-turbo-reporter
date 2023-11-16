@@ -42,8 +42,8 @@ module.exports = defineConfig({
 
           const dataToCreateTestrun =  {
             "suite_id": process.env.TR_PROJECT_ID,
-            "name": "New test run",
-            "description": "Test run description"
+            "name": process.env.TR_NAME,
+            "description": process.env.TR_DESCRIPTION
           }
 
           const testrailAPIUrl = process.env.TR_URL + process.env.TR_PROJECT_ID
@@ -110,7 +110,6 @@ function generateRandomString(length) {
   return crypto.randomBytes(length).toString('hex')
 }
 
-// použít async/await
 function transformResultsToTestCases(jObj) {
   const results = { results: [] }
   for (let countOfTestSuites = 1; countOfTestSuites < jObj.testsuites.testsuite.length; countOfTestSuites++) {
