@@ -1,14 +1,18 @@
 const { defineConfig } = require('cypress')
 const fs = require('fs').promises
+const path = require('path')
 const { XMLParser } = require('fast-xml-parser')
 const axios = require('axios')
 const dotenv = require('dotenv')
+const crypto = require('crypto')
+
 dotenv.config()
 
 const STATUS_PASSED = 1
 const STATUS_FAILED = 5
 
 const auth = Buffer.from(`${process.env.TR_USERNAME}:${process.env.TR_PASSWORD}`).toString('base64')
+const testrailAPIGetTestrunID = process.env.TR_GET_TESTRUN_ID + process.env.TR_PROJECT_ID
 
 module.exports = defineConfig({
   reporter: 'junit',
@@ -17,49 +21,96 @@ module.exports = defineConfig({
   },
   e2e: {
     setupNodeEvents: async (on, config) => {
-      on('after:spec', async (spec, results) => {
+      on('after:spec', async (results) => {
         if (!results) return
         try {
-          const dataToCreateTestrun =  {
-            "suite_id": 1,
-            "name": "New test run",
-            "description": "Test run description"
-          }
           const jObj = await parseXMLData('./results/my-test-output.xml')
           const testCases = transformResultsToTestCases(jObj)
-          await writeResultsToFile('./results/all.json', jObj)
-          await writeResultsToFile('./results/my-test-output.json', testCases)
-
-          const testrailAPIUrl = process.env.TR_URL
-          await makePostRequestTo(testrailAPIUrl, dataToCreateTestrun)
-
-          const testrailAPIGetTestrunID = process.env.TR_GET_TESTRUN_ID
-          const lastTestrun = await getLastTestrun(testrailAPIGetTestrunID)
-
-          const testrailAPIUrlResults = process.env.TR_RESULTS
-          await makePostRequestTo(testrailAPIUrlResults + lastTestrun, testCases)
-
-          const testrailAPIUrlCloseRun = process.env.TR_CLOSE_TESTRUN
-          await makePostRequestTo(testrailAPIUrlCloseRun + lastTestrun, '')
+          // await writeResultsToFile('./results/all.json', jObj)
+          await writeResultsToFile(`./results/my-test-output-${generateRandomString(10)}.json`, testCases)
 
         } catch (error) {
           console.error(`Error in 'after:spec' event handler: ${error.message}`)
+        }
+      })
+
+      on('before:run', async (details) => {
+        if (!details) return
+        try {
+
+          // smáznout všechny files if exists on before run
+
+          const dataToCreateTestrun =  {
+            "suite_id": process.env.TR_PROJECT_ID,
+            "name": "New test run",
+            "description": "Test run description"
+          }
+
+          const testrailAPIUrl = process.env.TR_URL + process.env.TR_PROJECT_ID
+          await makePostRequestTo(testrailAPIUrl, dataToCreateTestrun)
+
+
+        } catch (error) {
+          console.error(error)
+        }
+      })
+
+      on('after:run', async (details) => {
+        if (!details) return
+        try {
+          const lastTestRunID = await getLastTestrun(testrailAPIGetTestrunID)
+
+          const testrailAPIUrlResults = process.env.TR_RESULTS
+          await makePostRequestTo(testrailAPIUrlResults + lastTestRunID, await mergeJSONResults())
+
+          const testrailAPIUrlCloseRun = process.env.TR_CLOSE_TESTRUN
+          await makePostRequestTo(testrailAPIUrlCloseRun + lastTestRunID, '')
+        } catch (error) {
+          console.error(error)
         }
       })
     }
   }
 })
 
+async function mergeJSONResults() {
+  try {
+    const directoryPath = path.join(__dirname, `./results/`)
+    const files = await fs.readdir(directoryPath)
+    const mergedResults = []
+
+    for (const file of files) {
+      if (file.startsWith('my-test-output-') && file.endsWith('json')) {
+        const data = await fs.readFile(path.join(directoryPath, file), 'utf8')
+        const json = JSON.parse(data)
+        mergedResults.push(...json.results)
+      }
+    }
+
+    await fs.writeFile('./results/merged-results.json', JSON.stringify({ results: mergedResults }, null, 2))
+    console.log(JSON.stringify({ results: mergedResults }))
+    return JSON.stringify({ results: mergedResults })
+
+  } catch (error) {
+    throw new Error(`Error: ${error}`)
+  }
+}
+
 async function parseXMLData(filePath) {
   try {
     const xmlData = await fs.readFile(filePath, 'utf8')
     const parser = new XMLParser({ ignoreAttributes: false })
     return parser.parse(xmlData)
-  } catch (err) {
-    throw new Error(`Error reading XML file: ${err.message}`)
+  } catch (error) {
+    throw new Error(`Error reading XML file: ${error.message}`)
   }
 }
 
+function generateRandomString(length) {
+  return crypto.randomBytes(length).toString('hex')
+}
+
+// použít async/await
 function transformResultsToTestCases(jObj) {
   const results = { results: [] }
   for (let countOfTestSuites = 1; countOfTestSuites < jObj.testsuites.testsuite.length; countOfTestSuites++) {
@@ -82,13 +133,12 @@ function transformResultsToTestCases(jObj) {
 async function writeResultsToFile(filePath, data) {
   try {
     await fs.writeFile(filePath, JSON.stringify(data, null, 2), 'utf-8')
-  } catch (err) {
-    throw new Error(`Error writing to file ${filePath}: ${err.message}`)
+  } catch (error) {
+    throw new Error(`Error writing to file ${filePath}: ${error.message}`)
   }
 }
 
 async function makePostRequestTo(url, data) {
-  const auth = Buffer.from(`${process.env.TR_USERNAME}:${process.env.TR_PASSWORD}`).toString('base64')
   try {
     await axios.post(url, data, {
       headers: {
@@ -97,7 +147,7 @@ async function makePostRequestTo(url, data) {
       } 
     })
   } catch (error) {
-    console.error(`Error in 'after:run' event handler: ${error.message}`)
+    console.error(`Error in makePostRequest event handler: ${error.message}`)
   }
 }
 
@@ -109,8 +159,9 @@ async function getLastTestrun(url) {
         'Authorization': `Basic ${auth}`
       }
     })
+    console.log(response.data.runs[0].id)
     return response.data.runs[0].id
   } catch (error) {
-    console.error(`Error in 'after:run' event handler: ${error.message}`)
+    console.error(`Error in makePostRequest event handler: ${error.message}`)
   }
 }
