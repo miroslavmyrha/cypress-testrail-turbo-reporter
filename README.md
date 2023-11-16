@@ -21,6 +21,7 @@ cd /<project>
 
 npm install
 ```
+
 ## Run tests
 
 ```bash
@@ -34,6 +35,8 @@ npx cypress run
 ```
 
 ## .env setup
+
+Create .env file in root of the project
 
 ```
 # credetials: 
