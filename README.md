@@ -16,6 +16,11 @@ My own testrail reporter.
 
 - Here are a few ways to use it:
 
+Setting up your Testrail installation:
+
+- Testcases with Case ID´s are created
+![image](https://github.com/miroslavkadidlo/cypress-testrail-turbo-reporter/assets/16743203/6703a57c-afae-45cb-a79e-7d7529c95cda)
+
 ```bash
 describe('Test suite 1', () => {
   before(() => {
@@ -48,7 +53,7 @@ describe('Test suite 1', () => {
     cy.get('h1').should('be.visible')
   })
 
-  context('Other secrion', () => {
+  context('Other section', () => {
     it('C2 - anchor with caption "Ahoj!" test', () => {
       cy.get('a').contains('Ahoj!').should('be.visible')
     })
