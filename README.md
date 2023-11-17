@@ -23,6 +23,8 @@ Here are a few ways to use it.
 TR_PROJECT_ID = <ID number of your Testrail project>
 ```
 
+... and others configuration in [.env setup](https://github.com/miroslavkadidlo/cypress-testrail-turbo-reporter/blob/main/README.md#env-setup)
+
 ![image](https://github.com/miroslavkadidlo/cypress-testrail-turbo-reporter/assets/16743203/76f57a5f-b20d-4eb3-9441-6294f7185e17)
 
 - Testcases with Case ID´s are created:
