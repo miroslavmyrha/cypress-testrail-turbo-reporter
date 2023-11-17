@@ -6,6 +6,12 @@ My own testrail reporter.
 - All essential magic takes place in node events and with hooks in cypress.config.js file.
 - Results are parsed, merged and preprocessed in /results folder
 
+## Introduction
+
+- [Cypress](https://https://www.cypress.io/) is most popular JS/TS test framework for writing automated tests. 
+- [Testrail](https://www.testrail.com/) is most popular test management tool with many functions.
+- Motivation for make this project are improvement myself in coding in javascript and try to make very first open source project.
+
 ## Requirements
 
 Installed [Node.js](https://nodejs.org), [npm](https://npmjs.com) package manager
