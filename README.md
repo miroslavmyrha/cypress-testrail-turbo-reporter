@@ -18,6 +18,11 @@ Here are a few ways to use it.
 
 - check your project ID and set up it in .env file:
 
+```bash
+# project ID: 
+TR_PROJECT_ID = <ID number of your Testrail project>
+```
+
 ![image](https://github.com/miroslavkadidlo/cypress-testrail-turbo-reporter/assets/16743203/76f57a5f-b20d-4eb3-9441-6294f7185e17)
 
 - Testcases with Case ID´s are created:
