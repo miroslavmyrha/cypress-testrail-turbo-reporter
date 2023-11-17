@@ -78,7 +78,7 @@ describe('Test suite 1', () => {
 
 - Installed [Node.js](https://nodejs.org), [npm](https://npmjs.com) package manager
 
-. Testrail installation with test cases corellates with case ID´s.
+- Testrail installation with test cases corellates with case ID´s.
 
 - Cypress version >= 10.x.x
 
