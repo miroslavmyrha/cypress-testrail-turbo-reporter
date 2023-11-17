@@ -16,8 +16,6 @@ My own testrail reporter.
 
 ## Usage example
 
-Here are a few ways to use it.
-
 - check your project ID and set up it in .env file ... and others configuration in .env setup: [.env setup](https://github.com/miroslavkadidlo/cypress-testrail-turbo-reporter/blob/main/README.md#env-setup)
 
 
