@@ -12,9 +12,59 @@ My own testrail reporter.
 - [Testrail](https://www.testrail.com/) is most popular test management tool with many functions.
 - Motivation for make this project are improvement myself in coding in javascript and try to make very first open source project.
 
+## Usage example
+
+- Here are a few ways to use it:
+
+```bash
+describe('Test suite 1', () => {
+  before(() => {
+    cy.visit('https://<myTestPage.com>')
+  })
+
+  it('C1 - h1 is visible test', () => {
+    cy.get('h1').should('be.visible')
+  })
+
+  it('C2 - anchor with caption "Ahoj!" test', () => {
+    cy.get('a').contains('Ahoj!').should('be.visible')
+  })
+
+  it('C3 - Button with caption "GO!" test', () => {
+    cy.get('button').contains('GO!').should('be.visible')
+  })
+})
+```
+
+or nested context/describe
+
+```bash
+describe('Test suite 1', () => {
+  before(() => {
+    cy.visit('https://<myTestPage.com>')
+  })
+
+  it('C1 - h1 is visible test', () => {
+    cy.get('h1').should('be.visible')
+  })
+
+  context('Other secrion', () => {
+    it('C2 - anchor with caption "Ahoj!" test', () => {
+      cy.get('a').contains('Ahoj!').should('be.visible')
+    })
+
+    it('C3 - Button with caption "GO!" test', () => {
+      cy.get('button').contains('GO!').should('be.visible')
+    })
+  })
+})
+```
+
 ## Requirements
 
 Installed [Node.js](https://nodejs.org), [npm](https://npmjs.com) package manager
+
+Testrail installation with test cases corellates with case ID´s.
 
 Cypress version >= 10.x.x
 
