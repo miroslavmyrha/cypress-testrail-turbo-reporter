@@ -124,9 +124,9 @@ TR_PASSWORD = "<password>"
 # project ID: 
 TR_PROJECT_ID = <ID number of your Testrail project>
 # name of new testrun:
-TR_NAME = "<Name of your automated testrun>"
+TR_NAME = "<Name of your automated testrun, it´s fully up to you how you want to name it>"
 # description of testrun:
-TR_DESCRIPTION = "<Description of your automated testrun>"
+TR_DESCRIPTION = "<Description of your automated testrun, it´s fully up to you how you want to name it>"
 
 # create testrun:
 TR_URL = "https://<your Testrail installation>.testrail.io/index.php?/api/v2/add_run/"
