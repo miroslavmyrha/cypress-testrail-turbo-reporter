@@ -24,6 +24,8 @@ Here are a few ways to use it.
 TR_PROJECT_ID = <ID number of your Testrail project>
 ```
 
+![image](https://github.com/miroslavkadidlo/cypress-testrail-turbo-reporter/assets/16743203/50d5ec78-be3d-42aa-bb99-83582a0bca9d)
+
 - Testcases with Case ID´s are created:
 
 ![image](https://github.com/miroslavkadidlo/cypress-testrail-turbo-reporter/assets/16743203/6703a57c-afae-45cb-a79e-7d7529c95cda)
