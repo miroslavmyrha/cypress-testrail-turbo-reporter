@@ -76,15 +76,21 @@ describe('Test suite 1', () => {
 
 ## Requirements
 
-Installed [Node.js](https://nodejs.org), [npm](https://npmjs.com) package manager
+- Installed [Node.js](https://nodejs.org), [npm](https://npmjs.com) package manager
 
-Testrail installation with test cases corellates with case ID´s.
+. Testrail installation with test cases corellates with case ID´s.
 
-Cypress version >= 10.x.x
+- Cypress version >= 10.x.x
 
-Create in folder /cypress/e2e/*.cy.js tests which exists in your Testrail installation with case ID like: Cxxxx, which x means Testrail ID number.
+- Tested on node version: v18.18.1, npm version 9.8.1 
+
+- Create in folder /cypress/e2e/*.cy.js tests which exists in your Testrail installation with case ID like: Cxxxx, which x means Testrail ID number.
 
 ## Installation
+
+clonning repo:
+
+git clone https://github.com/miroslavkadidlo/cypress-testrail-turbo-reporter.git
 
 ```bash
 cd /<project>
