@@ -8,13 +8,17 @@ My own testrail reporter.
 
 ## Introduction
 
-- [Cypress](https://https://www.cypress.io/) is most popular JS/TS test framework for writing automated tests. 
+- [Cypress](https://www.cypress.io/) is most popular JS/TS test framework for writing automated tests. 
 - [Testrail](https://www.testrail.com/) is most popular test management tool with many functions.
 - Motivation for make this project are improvement myself in coding in javascript and try to make very first open source project.
 
 ## Usage example
 
 Here are a few ways to use it.
+
+- check your project ID and set up it in .env file:
+
+![image](https://github.com/miroslavkadidlo/cypress-testrail-turbo-reporter/assets/16743203/76f57a5f-b20d-4eb3-9441-6294f7185e17)
 
 - Testcases with Case ID´s are created:
 
