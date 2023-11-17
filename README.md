@@ -14,11 +14,10 @@ My own testrail reporter.
 
 ## Usage example
 
-- Here are a few ways to use it:
+Here are a few ways to use it.
 
-Setting up your Testrail installation:
+- Testcases with Case ID´s are created:
 
-- Testcases with Case ID´s are created
 ![image](https://github.com/miroslavkadidlo/cypress-testrail-turbo-reporter/assets/16743203/6703a57c-afae-45cb-a79e-7d7529c95cda)
 
 ```bash
@@ -41,7 +40,7 @@ describe('Test suite 1', () => {
 })
 ```
 
-or nested context/describe
+- or nested context/describe
 
 ```bash
 describe('Test suite 1', () => {
