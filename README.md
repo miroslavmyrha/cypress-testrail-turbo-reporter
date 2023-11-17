@@ -150,6 +150,8 @@ to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
 
+Grab some issue and make this project better :) [Issues](https://github.com/miroslavkadidlo/cypress-testrail-turbo-reporter/issues)
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
