@@ -5,7 +5,7 @@ My own testrail reporter.
 - Requirements are only send passed/failed with possible feature extensions in the future.
 - All essential magic takes place in node events and with hooks in cypress.config.js file.
 - Results are parsed, merged and preprocessed in /results folder
-- **notice:** It works well in headless mode, but in interactive mode it should don´t works well due to experimental mode with - **experimentalInteractiveRunEvents**.
+- **notice:** It works well in headless mode, but in interactive mode it should don´t works well due to experimental mode with - **experimentalInteractiveRunEvents**, see: [plugins documentation](https://docs.cypress.io/api/plugins/after-run-api).
 
 
 ## Introduction
