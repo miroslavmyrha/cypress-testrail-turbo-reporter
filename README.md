@@ -60,6 +60,9 @@ TR_RESULTS = "https://<your Testrail installation>.testrail.io/index.php?/api/v2
 TR_CLOSE_TESTRUN = "https://<your Testrail installation>.testrail.io/index.php?/api/v2/close_run/"
 ```
 
+## Unit tests
+TO-DO
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first
