@@ -30,6 +30,8 @@ TR_PROJECT_ID = <ID number of your Testrail project>
 
 ![image](https://github.com/miroslavkadidlo/cypress-testrail-turbo-reporter/assets/16743203/6703a57c-afae-45cb-a79e-7d7529c95cda)
 
+- Valid structures:
+
 ```bash
 describe('Test suite 1', () => {
   before(() => {
