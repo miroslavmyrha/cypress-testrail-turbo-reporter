@@ -7,7 +7,7 @@ context('test2', () => {
     cy.get('h10').should('exist').and('be.visible')
   })
 
-  it.skip('C10', () => {
+  it('C10', () => {
     cy.get('h1').should('exist').and('be.visible')
   })
 })

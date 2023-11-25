@@ -14,6 +14,8 @@ const STATUS_FAILED = 5
 const auth = Buffer.from(`${process.env.TR_USERNAME}:${process.env.TR_PASSWORD}`).toString('base64')
 const testrailAPIGetTestrunID = process.env.TR_GET_TESTRUN_ID + process.env.TR_PROJECT_ID
 
+const directoryPath = path.join(__dirname, `./results/`)
+
 module.exports = defineConfig({
   reporter: 'junit',
   reporterOptions: {
@@ -38,7 +40,7 @@ module.exports = defineConfig({
         if (!details) return
         try {
 
-          // smáznout všechny files if exists on before run
+          await deleteAllResultsFiles()
 
           const dataToCreateTestrun =  {
             "suite_id": process.env.TR_PROJECT_ID,
@@ -73,10 +75,28 @@ module.exports = defineConfig({
   }
 })
 
+async function readFiles() {
+  try {
+    return files = await fs.readdir(directoryPath)
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+async function deleteAllResultsFiles() {
+  for (const file of await readFiles() ) {
+    try {
+      const filePath = path.join(directoryPath, file)
+      await fs.unlink(filePath)
+    } catch (error) {
+      console.error(error)
+    } 
+  }
+}
+
 async function mergeJSONResults() {
   try {
-    const directoryPath = path.join(__dirname, `./results/`)
-    const files = await fs.readdir(directoryPath)
+    const files = await readFiles()
     const mergedResults = []
 
     for (const file of files) {

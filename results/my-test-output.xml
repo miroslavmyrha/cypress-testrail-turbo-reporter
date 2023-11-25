@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="Mocha Tests" time="2.038" tests="2" failures="0" skipped="1">
-  <testsuite name="Root Suite" timestamp="2023-11-16T22:22:29" tests="0" file="cypress\e2e\spec3.cy.js" time="0.000" failures="0">
+<testsuites name="Mocha Tests" time="5.932" tests="2" failures="1">
+  <testsuite name="Root Suite" timestamp="2023-11-25T00:55:16" tests="0" file="cypress\e2e\spec3.cy.js" time="0.000" failures="0">
   </testsuite>
-  <testsuite name="test2" timestamp="2023-11-16T22:22:29" tests="2" time="2.034" failures="0">
-    <testcase name="test2 C3 - test third" time="0.299" classname="C3 - test third">
+  <testsuite name="test2" timestamp="2023-11-25T00:55:16" tests="2" time="5.928" failures="1">
+    <testcase name="test2 C3 - test third" time="0.292" classname="C3 - test third">
+    </testcase>
+    <testcase name="test2 C4 - test fourth" time="0.000" classname="C4 - test fourth">
+      <failure message="Timed out retrying after 4000ms: Expected to find element: `nevim`, but never found it." type="AssertionError"><![CDATA[AssertionError: Timed out retrying after 4000ms: Expected to find element: `nevim`, but never found it.
+    at Context.eval (webpack://cypress-testrail-turbo-reporter/./cypress/e2e/spec3.cy.js:11:7)]]></failure>
     </testcase>
   </testsuite>
 </testsuites>
