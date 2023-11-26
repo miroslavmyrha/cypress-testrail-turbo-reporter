@@ -10,4 +10,8 @@ context('test2', () => {
   it('C10', () => {
     cy.get('h1').should('exist').and('be.visible')
   })
+   
+  it('C403 test', () => {
+    cy.get('test')
+  })
 })

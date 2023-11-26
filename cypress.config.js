@@ -14,7 +14,8 @@ const STATUS_FAILED = 5
 const auth = Buffer.from(`${process.env.TR_USERNAME}:${process.env.TR_PASSWORD}`).toString('base64')
 const testrailAPIGetTestrunID = process.env.TR_GET_TESTRUN_ID + process.env.TR_PROJECT_ID
 
-const directoryPath = path.join(__dirname, `./results/`)
+const resultsDirectoryPath = path.join(__dirname, `./results/`)
+const unitDirectoryPath = path.join(__dirname, `./unitTestsData/`)
 
 module.exports = defineConfig({
   reporter: 'junit',
@@ -37,23 +38,40 @@ module.exports = defineConfig({
       })
 
       on('before:run', async (details) => {
-        if (!details) return
-        try {
 
-          await deleteAllResultsFiles()
+        // there should be unit tests
 
-          const dataToCreateTestrun =  {
-            "suite_id": process.env.TR_PROJECT_ID,
-            "name": process.env.TR_NAME,
-            "description": process.env.TR_DESCRIPTION
+        if (process.env.UNIT_TESTS === 'true') {
+          try {
+            console.log('TRUE!!!')
+            if (!details) return
+
+            const jObj = await parseXMLData('./unitTestsData/inputData/my-test-output.xml')
+            const testCases = transformResultsToTestCases(jObj)
+            await writeResultsToFile(`./unitTestsData/outputData/my-test-output-${generateRandomString(10)}.json`, testCases)
+
+          } catch (error) {
+            console.error(error)
           }
-
-          const testrailAPIUrl = process.env.TR_URL + process.env.TR_PROJECT_ID
-          await makePostRequestTo(testrailAPIUrl, dataToCreateTestrun)
-
-
-        } catch (error) {
-          console.error(error)
+        } else {
+          if (!details) return
+          try {
+  
+            await deleteAllResultsFiles()
+  
+            const dataToCreateTestrun =  {
+              "suite_id": process.env.TR_PROJECT_ID,
+              "name": process.env.TR_NAME,
+              "description": process.env.TR_DESCRIPTION
+            }
+  
+            const testrailAPIUrl = process.env.TR_URL + process.env.TR_PROJECT_ID
+            await makePostRequestTo(testrailAPIUrl, dataToCreateTestrun)
+  
+  
+          } catch (error) {
+            console.error(error)
+          }
         }
       })
 
@@ -75,18 +93,18 @@ module.exports = defineConfig({
   }
 })
 
-async function readFiles() {
+async function readFiles(directoryPaPath) {
   try {
-    return files = await fs.readdir(directoryPath)
+    return files = await fs.readdir(directoryPaPath)
   } catch (error) {
     console.error(error)
   }
 }
 
 async function deleteAllResultsFiles() {
-  for (const file of await readFiles() ) {
+  for (const file of await readFiles(resultsDirectoryPath) ) {
     try {
-      const filePath = path.join(directoryPath, file)
+      const filePath = path.join(resultsDirectoryPath, file)
       await fs.unlink(filePath)
     } catch (error) {
       console.error(error)
@@ -96,12 +114,12 @@ async function deleteAllResultsFiles() {
 
 async function mergeJSONResults() {
   try {
-    const files = await readFiles()
+    const files = await readFiles(resultsDirectoryPath)
     const mergedResults = []
 
     for (const file of files) {
       if (file.startsWith('my-test-output-') && file.endsWith('json')) {
-        const data = await fs.readFile(path.join(directoryPath, file), 'utf8')
+        const data = await fs.readFile(path.join(resultsDirectoryPath, file), 'utf8')
         const json = JSON.parse(data)
         mergedResults.push(...json.results)
       }
@@ -120,6 +138,7 @@ async function parseXMLData(filePath) {
   try {
     const xmlData = await fs.readFile(filePath, 'utf8')
     const parser = new XMLParser({ ignoreAttributes: false })
+    await fs.writeFile('./unitTestsData/outputData/test.json', JSON.stringify(parser.parse(xmlData), null, 2), 'utf-8')
     return parser.parse(xmlData)
   } catch (error) {
     throw new Error(`Error reading XML file: ${error.message}`)

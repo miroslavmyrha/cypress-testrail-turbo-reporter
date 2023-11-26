@@ -3,7 +3,7 @@ describe('test2', () => {
     cy.visit('https://example.cypress.io')
   })
 
-  it('C3 - test third', () => {
+  it.skip('C3 - test third', () => {
     cy.get('h1').should('exist').and('be.visible')
   })
 
