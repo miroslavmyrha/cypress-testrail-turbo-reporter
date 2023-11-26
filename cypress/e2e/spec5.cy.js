@@ -3,11 +3,11 @@ describe('test2', () => {
     cy.visit('https://example.cypress.io')
   })
 
-  it.skip('C3 - test third', () => {
+  it('C3 - test third', () => {
     cy.get('h1').should('exist').and('be.visible')
   })
 
-  it('C4 - test fourth', () => {
+  it.skip('C4 - test fourth', () => {
     cy.get('nevim')
   })
 })

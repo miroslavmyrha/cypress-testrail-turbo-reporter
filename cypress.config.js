@@ -40,38 +40,23 @@ module.exports = defineConfig({
       on('before:run', async (details) => {
 
         // there should be unit tests
+        if (!details) return
+        try {
 
-        if (process.env.UNIT_TESTS === 'true') {
-          try {
-            console.log('TRUE!!!')
-            if (!details) return
+          await deleteAllResultsFiles()
 
-            const jObj = await parseXMLData('./unitTestsData/inputData/my-test-output.xml')
-            const testCases = transformResultsToTestCases(jObj)
-            await writeResultsToFile(`./unitTestsData/outputData/my-test-output-${generateRandomString(10)}.json`, testCases)
-
-          } catch (error) {
-            console.error(error)
+          const dataToCreateTestrun =  {
+            "suite_id": process.env.TR_PROJECT_ID,
+            "name": process.env.TR_NAME,
+            "description": process.env.TR_DESCRIPTION
           }
-        } else {
-          if (!details) return
-          try {
-  
-            await deleteAllResultsFiles()
-  
-            const dataToCreateTestrun =  {
-              "suite_id": process.env.TR_PROJECT_ID,
-              "name": process.env.TR_NAME,
-              "description": process.env.TR_DESCRIPTION
-            }
-  
-            const testrailAPIUrl = process.env.TR_URL + process.env.TR_PROJECT_ID
-            await makePostRequestTo(testrailAPIUrl, dataToCreateTestrun)
-  
-  
-          } catch (error) {
-            console.error(error)
-          }
+
+          const testrailAPIUrl = process.env.TR_URL + process.env.TR_PROJECT_ID
+          await makePostRequestTo(testrailAPIUrl, dataToCreateTestrun)
+
+
+        } catch (error) {
+          console.error(error)
         }
       })
 

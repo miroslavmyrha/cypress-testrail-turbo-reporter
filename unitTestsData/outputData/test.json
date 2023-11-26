@@ -7,7 +7,7 @@
     "testsuite": [
       {
         "@_name": "Root Suite",
-        "@_timestamp": "2023-11-26T02:23:37",
+        "@_timestamp": "2023-11-26T22:09:29",
         "@_tests": "0",
         "@_file": "cypress\\e2e\\spec5.cy.js",
         "@_time": "0.000",
@@ -15,26 +15,21 @@
       },
       {
         "testcase": {
-          "failure": {
-            "#text": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `nevim`, but never found it.\n    at Context.eval (webpack://cypress-testrail-turbo-reporter/./cypress/e2e/spec5.cy.js:11:7)",
-            "@_message": "Timed out retrying after 4000ms: Expected to find element: `nevim`, but never found it.",
-            "@_type": "AssertionError"
-          },
-          "@_name": "test2 C4 - test fourth",
-          "@_time": "0.000",
-          "@_classname": "C4 - test fourth"
+          "@_name": "test2 C3 - test third",
+          "@_time": "0.334",
+          "@_classname": "C3 - test third"
         },
         "@_name": "test2",
-        "@_timestamp": "2023-11-26T02:23:37",
+        "@_timestamp": "2023-11-26T22:09:29",
         "@_tests": "2",
-        "@_time": "6.124",
-        "@_failures": "1"
+        "@_time": "1.938",
+        "@_failures": "0"
       }
     ],
     "@_name": "Mocha Tests",
-    "@_time": "6.129",
+    "@_time": "1.947",
     "@_tests": "2",
-    "@_failures": "1",
+    "@_failures": "0",
     "@_skipped": "1"
   }
 }
