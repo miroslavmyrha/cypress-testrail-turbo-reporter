@@ -98,7 +98,7 @@ describe('Test suite 1', () => {
 clonning repo:
 
 ```bash
-git clone https://github.com/miroslavkadidlo/cypress-testrail-turbo-reporter.git
+git clone https://github.com/miroslavmyrha/cypress-testrail-turbo-reporter.git
 ```
 
 ```bash
