@@ -16,7 +16,7 @@
     "cypress-testrail",
     "reporter"
   ],
-  "author": "Miroslav Kadidlo",
+  "author": "Miroslav Myrha",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/miroslavkadidlo/cypress-testrail-turbo-reporter/issues"
